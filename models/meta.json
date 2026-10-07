@@ -1,0 +1,22 @@
+{
+  "residual_q10": -0.15085371410608558,
+  "residual_q90": 0.14733048489577957,
+  "range_low_factor": 0.8599734914490651,
+  "range_high_factor": 1.1587368447834365,
+  "test_table": [
+    {
+      "index": "Baseline (median)",
+      "MAE (PKR)": 2470632.036,
+      "RMSE (PKR)": 6007509.997,
+      "R2": -0.049,
+      "Median abs % error": 49.533
+    },
+    {
+      "index": "Random Forest",
+      "MAE (PKR)": 376168.058,
+      "RMSE (PKR)": 1591639.825,
+      "R2": 0.926,
+      "Median abs % error": 6.103
+    }
+  ]
+}
