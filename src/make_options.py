@@ -18,6 +18,11 @@ for (make, model), n in mc.items():
         models_by_make.setdefault(make, []).append(model)
 models_by_make = {m: sorted(v) for m, v in models_by_make.items()}
 
+def most_common(col):
+    """Most frequent value of `col` for each model."""
+    return (df.groupby("model")[col]
+            .agg(lambda s: s.value_counts().idxmax()).to_dict())
+
 options = {
     "models_by_make": models_by_make,
     "fuel": sorted(df["fuel"].unique().tolist()),
@@ -27,6 +32,10 @@ options = {
     "location": sorted(df["location"].unique().tolist()),
     "engine_by_model": (df.groupby("model")["engine_cc"].median()
                         .dropna().round().astype(int).to_dict()),
+    "body_by_model": most_common("body_type"),
+    "fuel_by_model": most_common("fuel"),
+    "transmission_by_model": most_common("transmission"),
+    "assembly_by_model": most_common("assembly"),
     "year_min": int(df["year"].min()),
     "year_max": int(df["year"].max()),
     "median_features": int(df["n_features"].median()),
