@@ -4,7 +4,6 @@ Predicts a fair market price for used cars in Pakistan from make, model, year, m
 
 **Live demo:** https://pricesense-kcztmnpnzzbgfqsheqyhzj.streamlit.app/
 
-**Demo video:** (add Loom/YouTube link)
 
 ![Prediction](images/app_single.png)
 
@@ -51,7 +50,7 @@ Top features: n_features (0.44), car_age (0.22), engine_cc (0.18), brand_tier (0
 - Feature importance chart
 - Batch prediction from an uploaded CSV
 - Unseen categories do not crash the app
-- Fuel, body type, transmission and assembly defaults auto-fill from the chosen model
+- Model, fuel, body type, transmission and assembly defaults auto-fill from the chosen model
 
 ![Batch](images/app_batch.png)
 
@@ -64,14 +63,14 @@ venv\Scripts\activate        # Mac/Linux: source venv/bin/activate
 pip install -r requirements.txt
 streamlit run app/app.py
 ```
-To retrain: `python src/cleaning.py`, run the modelling notebook, then `python src/make_options.py`.
+To retrain: `python src/cleaning.py`, then run the modelling notebook and `python src/make_options.py`.
 
 ## Limitations
-- Location mixes cities, provinces and "Unregistered", so it is not clean city data.
-- `n_features` is the strongest feature but partly proxies for newer, higher-trim cars.
-- "Unregistered" cars are priced higher in the data (likely new imports), so it is not a discount signal.
-- Rare models and unusual combinations give less reliable predictions.
-- Brand tiers were computed from medians over the full dataset, including test rows; the effect is small.
+- Location is a mix of cities, provinces and "Unregistered", not clean city data.
+- `n_features` is the strongest feature but partly proxies for newer, higher-trim cars; users must enter it themselves.
+- "Unregistered" cars are priced higher in the data (likely new imports), so `is_registered` is not a discount signal.
+- Rare models and unusual combinations (for example an APV with an SUV body type) give less reliable predictions.
+- Brand tiers were computed from medians over the full dataset, including test rows; the effect is small, but a stricter version would use training rows only.
 - Dropdown defaults are the most common values per model, not guarantees.
 - Prices are asking prices from listings, not final sale prices.
-- The Random Forest model file is about 60 MB.
+- Random Forest model file is about 60 MB.
