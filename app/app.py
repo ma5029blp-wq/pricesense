@@ -185,12 +185,12 @@ with tab2:
         else:
             try:
                 for col in features.RAW_NUMERIC:
-                  data[col] = pd.to_numeric(data[col], errors="coerce")
-                  data["predicted_price"] = predict(data).round(-3)
-                  data["range_low"] = (data["predicted_price"] * LOW).round(-3)
-                  data["range_high"] = (data["predicted_price"] * HIGH).round(-3)
-                  st.dataframe(data, width="stretch")
-                  st.download_button("⬇️ Download predictions", data.to_csv(index=False),
+                    data[col] = pd.to_numeric(data[col], errors="coerce")
+                data["predicted_price"] = predict(data).round(-3)
+                data["range_low"] = (data["predicted_price"] * LOW).round(-3)
+                data["range_high"] = (data["predicted_price"] * HIGH).round(-3)
+                st.dataframe(data, width="stretch")
+                st.download_button("⬇️ Download predictions", data.to_csv(index=False),
                                    "predictions.csv")
             except Exception as e:
                 st.error(f"Could not predict. Please check your CSV values. ({e})")
