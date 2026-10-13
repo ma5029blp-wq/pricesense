@@ -1,8 +1,37 @@
 {
-  "residual_q10": -0.15085371410608558,
-  "residual_q90": 0.14733048489577957,
-  "range_low_factor": 0.8599734914490651,
-  "range_high_factor": 1.1587368447834365,
+  "best_model": "Random Forest",
+  "range_low_factor": 0.8603288345672847,
+  "range_high_factor": 1.1583815801337207,
+  "cv_table": [
+    {
+      "model": "Baseline (median)",
+      "MAE (log)": 0.671,
+      "RMSE (log)": 0.874,
+      "R2": -0.001,
+      "seconds": 3.385
+    },
+    {
+      "model": "Linear (Ridge)",
+      "MAE (log)": 0.133,
+      "RMSE (log)": 0.202,
+      "R2": 0.946,
+      "seconds": 2.819
+    },
+    {
+      "model": "Random Forest",
+      "MAE (log)": 0.101,
+      "RMSE (log)": 0.166,
+      "R2": 0.964,
+      "seconds": 255.843
+    },
+    {
+      "model": "Gradient Boosting",
+      "MAE (log)": 0.121,
+      "RMSE (log)": 0.177,
+      "R2": 0.959,
+      "seconds": 91.164
+    }
+  ],
   "test_table": [
     {
       "index": "Baseline (median)",
@@ -13,10 +42,10 @@
     },
     {
       "index": "Random Forest",
-      "MAE (PKR)": 376168.058,
-      "RMSE (PKR)": 1591639.825,
-      "R2": 0.926,
-      "Median abs % error": 6.103
+      "MAE (PKR)": 387224.82,
+      "RMSE (PKR)": 1685292.316,
+      "R2": 0.917,
+      "Median abs % error": 6.075
     }
   ]
 }

@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT / "src"))
 import features  # noqa: F401  (joblib needs it to unpickle add_features)
 
-CURRENT_YEAR = 2025
+CURRENT_YEAR = features.CURRENT_YEAR
 st.set_page_config(page_title="PriceSense", page_icon="🚗", layout="wide")
 
 st.markdown("""
@@ -126,7 +126,7 @@ with tab1:
         listed = st.number_input("Listed price in PKR (optional)", 0, 500_000_000, 0,
                                  step=100_000, help="Enter an asking price to get a deal check.")
 
-    if st.button("💰 Predict price", type="primary", use_container_width=True):
+    if st.button("💰 Predict price", type="primary", width="stretch"):
         row = pd.DataFrame([{
             "car_age": max(CURRENT_YEAR - year, 0), "mileage_km": mileage,
             "engine_cc": engine, "n_features": n_feat,
@@ -164,7 +164,7 @@ with tab1:
                      y=alt.Y("feature:N", sort="-x", title=None),
                      tooltip=["feature", alt.Tooltip("importance:Q", format=".3f")])
              .properties(height=330))
-    st.altair_chart(chart, use_container_width=True)
+    st.altair_chart(chart, width="stretch")
     st.caption("Random Forest feature importance. 'n_features' also proxies for newer, higher-trim cars.")
 
 # -------------------------------------------------------------------- batch
@@ -183,9 +183,14 @@ with tab2:
         if missing:
             st.error(f"Missing columns: {missing}")
         else:
-            data["predicted_price"] = predict(data).round(-3)
-            data["range_low"] = (data["predicted_price"] * LOW).round(-3)
-            data["range_high"] = (data["predicted_price"] * HIGH).round(-3)
-            st.dataframe(data, use_container_width=True)
-            st.download_button("⬇️ Download predictions", data.to_csv(index=False),
-                               "predictions.csv")
+            try:
+                for col in features.RAW_NUMERIC:
+                  data[col] = pd.to_numeric(data[col], errors="coerce")
+                  data["predicted_price"] = predict(data).round(-3)
+                  data["range_low"] = (data["predicted_price"] * LOW).round(-3)
+                  data["range_high"] = (data["predicted_price"] * HIGH).round(-3)
+                  st.dataframe(data, width="stretch")
+                  st.download_button("⬇️ Download predictions", data.to_csv(index=False),
+                                   "predictions.csv")
+            except Exception as e:
+                st.error(f"Could not predict. Please check your CSV values. ({e})")

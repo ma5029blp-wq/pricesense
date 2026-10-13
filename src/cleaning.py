@@ -4,7 +4,7 @@ import ast
 import numpy as np
 import pandas as pd
 
-CURRENT_YEAR = 2025
+from features import CURRENT_YEAR
 TWO_WORD_MAKES = ["Land Rover", "Range Rover", "Mercedes Benz", "Alfa Romeo",
                   "Rolls Royce", "Aston Martin", "Great Wall"]
 # first word + second word that together form ONE model name
