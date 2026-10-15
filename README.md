@@ -75,7 +75,7 @@ To retrain: `python src/cleaning.py`, then `python src/make_options.py`, then `p
 - The Random Forest model file is about 40 MB
 
 ## Intern notes
-**Approach:** cleaned PakWheels data in reusable scripts, ran 8 EDA insights, built one leak-free sklearn Pipeline (brand tiers learned inside the Pipeline from training rows only), compared Ridge, Random Forest and Gradient Boosting against a median baseline with cross-validation, and evaluated the test set once.
-**Final metrics:** (fill in after running train.py: test R2, median % error, MAE)
-**Bonus features:** "good deal" check and batch CSV prediction, plus auto-filled dropdown defaults.
+**Approach:** Cleaned the PakWheels data in reusable scripts, ran 8 EDA insights, and built one leak-free sklearn Pipeline (brand tiers learned from training rows only). Compared Ridge, Random Forest and Gradient Boosting against a median baseline with 3-fold cross-validation, and evaluated the test set once.
+**Final metrics (test set):** R2 0.917, median error 6.1% (baseline 49.5%), MAE 387,225 PKR.
+**Bonus features:** "Good deal" check, batch CSV prediction (with bad-value handling), and auto-filled dropdown defaults.
 **Demo video:** (link)
