@@ -35,12 +35,12 @@ Final test set (PKR, evaluated once):
 
 | Metric | Baseline (median) | Random Forest |
 |---|---|---|
-| MAE | 2470632.036 | 387224.820 |
-| RMSE | 6007509.997 | 1685292.316 |
+| MAE | 2,470,632 | 387,225 |
+| RMSE | 6,007,510 | 1,685,292 |
 | R2 | -0.049 | 0.917 |
-| Median abs % error | 49.533% | 6.075% |
+| Median abs % error | 49.5% | 6.1% |
 
-Top features: n_features (0.44), car_age (0.22), engine_cc (0.18), brand_tier (0.07).
+Top features: n_features (0.44), car_age (0.22), engine_cc (0.19), brand_tier (0.05)
 
 ![Importance](images/app_importance.png)
 
