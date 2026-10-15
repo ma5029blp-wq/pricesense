@@ -10,7 +10,7 @@ import streamlit as st
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT / "src"))
-import features  # noqa: F401  (joblib needs it to unpickle add_features)
+import features  # noqa: F401  (joblib needs it to unpickle FeatureAdder)
 
 CURRENT_YEAR = features.CURRENT_YEAR
 st.set_page_config(page_title="PriceSense", page_icon="🚗", layout="wide")
