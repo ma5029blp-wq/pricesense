@@ -78,4 +78,4 @@ To retrain: `python src/cleaning.py`, then `python src/make_options.py`, then `p
 **Approach:** Cleaned the PakWheels data in reusable scripts, ran 8 EDA insights, and built one leak-free sklearn Pipeline (brand tiers learned from training rows only). Compared Ridge, Random Forest and Gradient Boosting against a median baseline with 3-fold cross-validation, and evaluated the test set once.
 **Final metrics (test set):** R2 0.917, median error 6.1% (baseline 49.5%), MAE 387,225 PKR.
 **Bonus features:** "Good deal" check, batch CSV prediction (with bad-value handling), and auto-filled dropdown defaults.
-**Demo video:** (link)
+**Demo video:** ([link](https://www.loom.com/share/fa5a76f55bc34a2c81da2f15b9b870aa))
